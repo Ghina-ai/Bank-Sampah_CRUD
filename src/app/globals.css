@@ -43,9 +43,6 @@ a {
   text-decoration: none;
 }
 
-/* =========================
-   DASHBOARD LAYOUT
-========================= */
 
 .dashboard {
   display: flex;
@@ -400,8 +397,6 @@ a {
   background: #edfafa;
 }
 
-/* Dashboard collections table */
-
 .table-scroll {
   width: 100%;
   overflow-x: auto;
@@ -435,7 +430,6 @@ a {
   padding: 28px 16px !important;
 }
 
-/* Dashboard community members */
 
 .members-list {
   display: grid;
@@ -501,10 +495,6 @@ a {
   text-align: center;
   padding: 20px 0;
 }
-
-/* =========================
-   WASTE MANAGEMENT
-========================= */
 
 .wm-layout {
   display: flex;
@@ -687,28 +677,41 @@ a {
   line-height: 1.7;
 }
 
-/* Waste search and count */
-
 .wm-card-toolbar {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(250px, 0.8fr) minmax(120px, 1fr) auto;
+  grid-template-areas: "search total button";
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin: 28px 0 22px;
+  gap: 20px;
+  width: 100%;
+  margin: 24px 0 30px;
+}
+
+.wm-card-toolbar > .wm-add-button {
+  grid-area: button;
+  width: auto;
+  min-width: 0;
+  min-height: 44px;
+  margin: 0;
+  padding: 0 18px;
+  border-radius: 10px;
+  white-space: nowrap;
+  font-size: 13px;
 }
 
 .wm-search {
+ grid-area: search;
   display: flex;
   align-items: center;
-  gap: 9px;
-  width: min(420px, 100%);
-  min-height: 40px;
-  padding: 0 12px;
-  border: 1px solid #e1e9e4;
-  border-radius: 9px;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border: 1px solid #dce7e5;
+  border-radius: 14px;
   background: #fff;
-  color: #849199;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .wm-search:focus-within {
@@ -724,11 +727,9 @@ a {
 .wm-search input {
   width: 100%;
   min-width: 0;
-  border: 0;
+  border: none;
   outline: none;
   background: transparent;
-  color: #34434b;
-  font: inherit;
 }
 
 .wm-search input::placeholder {
@@ -744,19 +745,20 @@ a {
 }
 
 .wm-total {
-  color: #64748b;
-  font-size: 12px;
-  font-weight: 600;
+  grid-area: total;
+  justify-self: center;
   white-space: nowrap;
+  color: #526780;
+  font-size: 13px;
+  font-weight: 600;
 }
-
-/* Waste type cards */
 
 .wm-waste-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  align-items: stretch;
   gap: 20px;
+  width: 100%;
+  align-items: stretch;
 }
 
 .wm-waste-card,
@@ -774,8 +776,12 @@ a {
 }
 
 .wm-waste-card {
-  justify-content: space-between;
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .wm-waste-card:hover,
@@ -870,8 +876,6 @@ a {
   font-size: 17px;
 }
 
-/* Add new waste card */
-
 .wm-create-card {
   justify-content: center;
   align-items: flex-start;
@@ -911,8 +915,6 @@ a {
   font-size: 12px;
   line-height: 1.7;
 }
-
-/* Waste form modal */
 
 .wm-modal-overlay {
   position: fixed;
@@ -1039,59 +1041,6 @@ a {
   background: #f8fafb;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1150px) {
-  .content {
-    padding: 25px;
-  }
-
-  .topbar {
-    padding: 0 25px;
-  }
-
-  .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .wm-waste-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 760px) {
-  .wm-sidebar {
-    width: 64px;
-    min-width: 64px;
-    padding: 16px 7px;
-  }
-
-  .wm-brand {
-    justify-content: center;
-    padding: 0 0 25px;
-  }
-
-  .wm-brand > span:last-child,
-  .wm-nav-label,
-  .wm-profile > div:last-child {
-    display: none;
-  }
-
-  .wm-nav-link {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  font-size: 20px;
-  font-weight: 500;
-  border-radius: 8px;
-}
 
 .wm-nav-link span {
   font-size: px;
@@ -1127,113 +1076,133 @@ a {
   .wm-total {
     align-self: flex-start;
   }
+
+.member-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  margin-bottom: 24px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
-@media (max-width: 650px) {
-  .sidebar {
-    width: 68px;
-    padding: 20px 8px;
-  }
-
-  .brand {
-    justify-content: center;
-    padding: 0;
-  }
-
-  .brand > span:last-child,
-  .sidebar-bottom,
-  .nav-link:not(.active) {
-    display: none;
-  }
-
-  .side-nav {
-    margin-top: 35px;
-  }
-
-  .nav-link {
-    justify-content: center;
-    padding: 13px 5px;
-    font-size: 0;
-  }
-
-  .nav-link > span {
-    font-size: 19px;
-  }
-
-  .topbar {
-    min-height: 65px;
-    padding: 0 14px;
-  }
-
-  .breadcrumb {
-    gap: 7px;
-    font-size: 10px;
-  }
-
-  .admin-profile {
-    gap: 6px;
-  }
-
-  .admin-info,
-  .notification,
-  .chevron {
-    display: none;
-  }
-
-  .content {
-    padding: 22px 13px;
-  }
-
-  .welcome {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .welcome h1 {
-    font-size: 24px;
-  }
-
-  .stats-grid {
-    gap: 10px;
-  }
-
-  .stat-card {
-    padding: 13px;
-  }
-
-  .stat-card h2 {
-    font-size: 18px;
-  }
-
-  .panel {
-    padding: 14px;
-  }
-
-  .member-row {
-    flex-wrap: wrap;
-  }
-
-  .member-details {
-    flex-basis: calc(100% - 60px);
-  }
-
-  .status-active {
-    margin-left: 47px;
-  }
+.member-profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #d9f3f3;
+  color: #087f8c;
+  font-size: 23px;
+  font-weight: 700;
 }
 
-@media (max-width: 520px) {
-  .wm-waste-grid {
-    grid-template-columns: 1fr;
-  }
+.member-profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+}
 
-  .wm-content h1 {
-    font-size: 22px;
-  }
+.member-profile-name {
+  margin: 0;
+  color: #171717;
+  font-size: 20px;
+  font-weight: 600;
+}
 
-  .wm-waste-card,
-  .wm-create-card {
-    min-height: 215px;
-    padding: 19px;
-  }
+.member-profile-email {
+  margin: 0;
+  color: #737373;
+  font-size: 12px;
+}
+
+.member-profile-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #f0f0f0;
+  color: #262626;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.member-profile-status svg {
+  color: #0d9488;
+}
+
+.wm-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 28px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.wm-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.back-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  border-radius: 14px;
+}
+
+
+.back-dashboard svg {
+  font-size: 28px;
+}
+
+.profile-page-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-page-heading strong {
+  color: #172554;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-page-heading small {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.btn-detail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 1.5px solid #1595a8;
+  border-radius: 8px;
+  background-color: white;
+  color: #1595a8;
+  font-size: 10px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-detail:hover {
+  background-color: #1595a8;
+  color: white;
 }

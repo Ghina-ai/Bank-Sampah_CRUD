@@ -40,7 +40,6 @@ export default function WasteManagementPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
-  
 
 async function ambilData() {
   try {
@@ -92,8 +91,6 @@ async function ambilData() {
     setLoading(false);
   }
 }
-
-
 
   useEffect(() => {
     ambilData();
@@ -358,7 +355,7 @@ async function ambilData() {
                 <option value="">Pilih anggota yang menyetor</option>
                 {anggota.map((item) => (
                   <option key={item.id} value={item.id}>
-                    {item.nama} — ID {item.id}
+                    {item.nama}
                   </option>
                 ))}
               </select>

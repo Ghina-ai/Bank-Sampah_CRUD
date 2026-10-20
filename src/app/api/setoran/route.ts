@@ -33,7 +33,6 @@ export async function GET() {
     }
   }
 
-
 // POST: menambahkan data setoran
 export async function POST(request: Request) {
   try {
@@ -151,45 +150,6 @@ export async function POST(request: Request) {
         error: error.message,
         code: error.code,
       },
-      { status: 500 }
-    );
-  }
-}
-
-//DELETE
-export async function DELETE(request: Request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id");
-
-    if (!id || !/^\d+$/.test(id)) {
-      return NextResponse.json(
-        { message: "ID setoran tidak valid" },
-        { status: 400 }
-      );
-    }
-
-    const [result]: any = await db.execute(
-      "DELETE FROM setoran WHERE id = ?",
-      [id]
-    );
-
-    if (result.affectedRows === 0) {
-      return NextResponse.json(
-        { message: "Data setoran tidak ditemukan" },
-        { status: 404 }
-      );
-    }
-
-    return NextResponse.json({
-      message: "Data setoran berhasil dihapus",
-      id,
-    });
-  } catch (error) {
-    console.error(error);
-
-    return NextResponse.json(
-      { message: "Gagal menghapus data setoran" },
       { status: 500 }
     );
   }
