@@ -4,6 +4,8 @@ import pool from "@/lib/db";
 import type { RowDataPacket } from "mysql2";
 import { Icon } from "@iconify/react";
 
+export const instant = false;
+
 type Anggota = RowDataPacket & {
   id: number;
   nama: string;
