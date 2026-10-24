@@ -1,9 +1,4 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-
-/* =========================
-   GLOBAL
-========================= */
 
 :root {
   --primary: #1595a8;
@@ -47,10 +42,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-/* =========================
-   DASHBOARD UMUM
-========================= */
 
 .dashboard {
   display: flex;
@@ -146,10 +137,6 @@ a {
   min-width: 0;
 }
 
-/* =========================
-   HEADER UMUM
-========================= */
-
 .topbar {
   min-height: 78px;
   background: #fff;
@@ -224,10 +211,6 @@ a {
   color: var(--muted);
 }
 
-/* =========================
-   DASHBOARD CONTENT
-========================= */
-
 .content {
   width: 100%;
   max-width: 1600px;
@@ -288,10 +271,6 @@ a {
 .primary-button span {
   font-size: 19px;
 }
-
-/* =========================
-   CARD STATISTIK
-========================= */
 
 .stats-grid {
   display: grid;
@@ -684,13 +663,13 @@ a {
 }
 
 .wm-sidebar {
-  width: 220px;
-  min-width: 220px;
+  width: 200px;
+  min-width: 200px;
   background: #f0f5f6;
   border-right: 1px solid #e5ebed;
   display: flex;
   flex-direction: column;
-  padding: 22px 12px;
+  padding: 18px 10px;
 }
 
 .wm-brand {
@@ -798,8 +777,8 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 15px;
-  min-height: 65px;
-  padding: 0 28px;
+  min-height: 58px;
+  padding: 0 22px;
   background: #fff;
   border-bottom: 1px solid #edf0f1;
 }
@@ -834,7 +813,7 @@ a {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 34px 32px;
+  padding: 26px;
 }
 
 .wm-eyebrow {
@@ -1333,9 +1312,6 @@ a {
   font-size: 14px;
 }
 
-/* =========================
-   POPUP EDIT SETORAN
-========================= */
 
 .edit-setoran-overlay {
   position: fixed;
@@ -1588,3 +1564,20 @@ a {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.edit-setoran-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+}
+
+.edit-setoran-icon .iconify {
+  width: 25px;
+  height: 25px;
+  color: #1595a8;
+}
+

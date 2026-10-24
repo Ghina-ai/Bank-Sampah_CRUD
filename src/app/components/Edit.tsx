@@ -82,7 +82,7 @@ export default function EditSetoranModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="edit-setoran-heading">
-          <div>
+          <div className="edit-setoran-icon">
             <Icon icon="mdi:pencil-outline" />
           </div>
 

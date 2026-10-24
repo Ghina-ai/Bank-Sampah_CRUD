@@ -142,14 +142,7 @@ export default async function MemberProfile({
             <strong>Profil Anggota</strong>
             </div>
         </div>
-
-        <div className="wm-account">
-            <div>
-            <strong>Admin Ghina</strong>
-            <small>Administrator</small>
-            </div>
-        </div>
-        </header>
+    </header>
 
         <div className="content">
           <section className="welcome">
