@@ -154,3 +154,83 @@ export async function POST(request: Request) {
     );
   }
 }
+
+// PUT: mengedit data setoran berdasarkan ID
+export async function PUT(request: Request) {
+  try {
+    const body = await request.json();
+
+    const {
+      id,
+      jenis_sampah,
+      berat,
+      harga_per_kg,
+    } = body;
+
+    const setoranId = Number(id);
+    const beratAngka = Number(berat);
+    const hargaAngka = Number(harga_per_kg);
+
+    // Validasi data
+    if (
+      !Number.isInteger(setoranId) ||
+      setoranId <= 0 ||
+      typeof jenis_sampah !== "string" ||
+      !jenis_sampah.trim() ||
+      berat == null ||
+      harga_per_kg == null ||
+      !Number.isFinite(beratAngka) ||
+      !Number.isFinite(hargaAngka) ||
+      beratAngka <= 0 ||
+      hargaAngka < 0
+    ) {
+      return NextResponse.json(
+        { message: "Data setoran tidak valid" },
+        { status: 400 }
+      );
+    }
+
+    // Pastikan data setoran ada
+    const [rows]: any = await pool.query(
+      "SELECT id FROM setoran WHERE id = ?",
+      [setoranId]
+    );
+
+    if (rows.length === 0) {
+      return NextResponse.json(
+        { message: "Data setoran tidak ditemukan" },
+        { status: 404 }
+      );
+    }
+
+    // Update data setoran
+    // Status tidak diubah agar keputusan admin tetap aman
+    await pool.query(
+      `UPDATE setoran
+       SET jenis_sampah = ?,
+           berat_kg = ?,
+           harga_per_kg = ?
+       WHERE id = ?`,
+      [
+        jenis_sampah.trim(),
+        beratAngka,
+        hargaAngka,
+        setoranId,
+      ]
+    );
+
+    return NextResponse.json({
+      message: "Data setoran berhasil diperbarui",
+    });
+  } catch (error: any) {
+    console.error("Gagal mengedit setoran:", error);
+
+    return NextResponse.json(
+      {
+        message: "Gagal mengedit data setoran",
+        error: error.message,
+      },
+      { status: 500 }
+    );
+  }
+}
